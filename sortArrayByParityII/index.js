@@ -19,3 +19,30 @@ var sortArrayByParityII = function(nums) {
 	}
 	return nums;
 };
+
+/**
+ * Alternate, entirely in place solution
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortArrayByParityII = function(nums) {
+	const oddStack = [], evenStack = [];
+	let oddI = 1, evenI = 0;
+	for (let x = 0; x < nums.length; ++x) {
+		if (nums[x] % 2 === 0) {
+			evenStack.push(nums[x]);
+		} else {
+			oddStack.push(nums[x]);
+		}
+
+		if (x >= oddI && oddStack.length > 0) {
+			nums[oddI] = oddStack.pop();
+			oddI += 2;
+		}
+		if (x >= evenI && evenStack.length > 0) {
+			nums[evenI] = evenStack.pop();
+			evenI += 2;
+		}
+	}
+	return nums;
+};
