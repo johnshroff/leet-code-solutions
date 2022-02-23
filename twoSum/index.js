@@ -18,3 +18,22 @@ var twoSum = function(nums, target) {
         }
     }
 };
+
+
+/**
+ * After reviewing other answers, you only have to traverse the array once
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    const hashMap = {};
+    for (let x = 0; x < nums.length; ++x) {
+        const hashKey = target - nums[x];
+        if (hashMap[hashKey] !== undefined && hashMap[hashKey] !== x) {
+            return [x, hashMap[hashKey]];
+        }
+
+        hashMap[nums[x]] = x;
+    }
+};
