@@ -9,15 +9,12 @@
  * @return {string[]}
  */
 var findAllRecipes = function(recipes, ingredients, supplies) {
-    const s_map = {};
     const completed = [];
-    for (const supply of supplies) {
-        s_map[supply] = true;
-    }
+    const s_map = new Set(supplies);
     const canMakeRecipe = (x) => {
         for (const y in ingredients[x]) {
             const ingredient = ingredients[x][y];
-            if (s_map[ingredient] === undefined) {
+            if (!s_map.has(ingredient)) {
                 return false;
             } else {
                 delete ingredients[x][y];
@@ -32,7 +29,7 @@ var findAllRecipes = function(recipes, ingredients, supplies) {
             if (canMakeRecipe(x)) {
                 ++recipesMade;
                 completed.push(recipes[x]);
-                s_map[recipes[x]] = true;
+                s_map.add(recipes[x]);
                 delete recipes[x];
             }
         }
