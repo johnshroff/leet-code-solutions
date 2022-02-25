@@ -1,4 +1,5 @@
 /**
+ * Difficulty: Easy
  * @param {string} s
  * @return {number}
  */
