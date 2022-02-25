@@ -5,6 +5,7 @@
  * This means that revisions 1 and 001 are considered equal. If a version number does not specify a revision at an index,
  * then treat the revision as 0. For example, version 1.0 is less than version 1.1 because their revision 0s are the same,
  * but their revision 1s are 0 and 1 respectively, and 0 < 1.
+ * Difficulty: Medium
  * @param {string} version1
  * @param {string} version2
  * @return {number}
